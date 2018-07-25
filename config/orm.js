@@ -20,14 +20,14 @@ function sqlEyesObj(ob){
 };
 
 var orm = {
-    all: function(tabIn, cb){
+    selectAll: function(tabIn, cb){
         var querSt = "SELECT * FROM " + tabIn + ";";
         connection.query(querSt, function(err, res){
             if(err) throw err;
             cb(res);
         });
     },
-    create: function(table, cols, vals, cb){
+    insertOne: function(table, cols, vals, cb){
         var querSt = "INSERT INTO" + table;
         querSt += " (";
         querSt += cols.toString();
@@ -40,7 +40,7 @@ var orm = {
             cb(res);
         });
     },
-    update: function(table, objColVals, condition, cb){
+    updateOne: function(table, objColVals, condition, cb){
         var querSt = "UPDATE " + table;
         querSt += " SET ";
         querSt += sqlEyesObj(objColVals);
@@ -51,7 +51,7 @@ var orm = {
             cb(res);
         });
     },
-    delete: function(table, condition, cb){
+    deleteOne: function(table, condition, cb){
         var querSt = "DELETE FROM " + table;
         querSt += " WHERE ";
         querSt += condition;
