@@ -9,14 +9,15 @@
                 <ul class="mx-auto px-0">
                     {{#each burgers}}
                         {{#unless devoured}}
-                            <div class="rounded hover-craft px-1" data-active="no" data-eaten="no">{{burger_name}}</div>
+                            <div class="rounded hover-craft px-1">
+                                {{burger_name}}
+                                <button class="eat-change btn btn-custo-musto" data-id="{{id}}" data-eaten="1">Eat Me!</button>
+                                </div>
                         {{/unless}}
                     {{/each}}
                 </ul>
 
             </section>
-            
-            <div class="col-12 mt-3 text-center"><button id="eat-me" class="btn">Eat Me!</button></div>
         </div>
 
         <div class="row col mx-auto">
@@ -26,14 +27,15 @@
                 <ul class="mx-auto px-0">
                     {{#each burgers}}
                         {{#if devoured}}
-                            <div class="rounded hover-craft px-1" data-active="no" data-eaten="yes">{{burger_name}}</div>
+                            <div class="rounded hover-craft px-1">
+                                {{burger_name}}
+                                <button class="eat-change ewww btn btn-custo-musto" data-id="{{id}}" data-eaten="0">Give Back</button>
+                                </div>
                         {{/if}}
                     {{/each}}
                 </ul>
 
             </section>
-
-            <div class="col-12 mt-3 text-center"><button id="ewww" class="btn">Give Back</button></div>
         </div>
 
         <div class="col-12 mx-auto mt-5 text-center"><input id="new-berg" placeholder="New burger name!"></input></div>

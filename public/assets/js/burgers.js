@@ -1,49 +1,34 @@
-var toEat,
-    regurgitate;
-
-$(".hover-craft").on({
-    click: function(){
-        toEat = undefined,
-        regurgitate = undefined,
-        $(".hover-craft").attr("data-active", "no");
-        $(".hover-craft").css("background", "");
-        $(this).attr("data-active", "yes");
-        $(this).css("background", "rgb(145, 215, 147)");
-        if($(this).attr("data-eaten") === "no"){
-            toEat = $(this).text().trim();
-        } else {
-            regurgitate = $(this).text().trim();
-        };
-    },
+$(".ewww").on({
     mouseenter: function(){
-        if($(this).attr("data-active") === "no"){
-            $(this).css("background", "rgb(140, 177, 231)");
-        } else {
-            $(this).css("opacity", "0.65");
-        };
+        $(this).text("Ewww");
     },
     mouseleave: function(){
-        if($(this).attr("data-active") === "no"){
-            $(this).css("background", "");
-        } else {
-            $(this).css("opacity", "");
-        };
+        $(this).text("Give Back");
     }
 });
 
-$("#eat-me").click(function(){
-    if(toEat){
-        console.log(toEat);
+$(".eat-change").click(function(){
+    var id = $(this).data("id");
+    var devourChanger = $(this).data("eaten");
+    var devourChanging = {
+        devoured: devourChanger
     };
+    $.ajax("/api/burgers/" + id, {
+        type: "PUT",
+        data: devourChanging
+    }).then(function(){
+        location.reload();
+    })
 });
 
-$("#ewww").click(function(){
-    if(regurgitate){
-        console.log(regurgitate);
+$("#add-berg").click(function(){
+    var newBerg = {
+        burgerName: $("#new-berg").val().trim()
     };
+    $.ajax("/api/burgers", {
+        type: "POST",
+        data: newBerg
+    }).then(function(){
+        location.reload();
+    });
 });
-
-// $(".btn").click(function(){
-//     $(".hover-craft").attr("data-active", "no");
-//     $(".hover-craft").css("background", "");
-// });

@@ -1,21 +1,16 @@
 var connection = require("../config/connection.js");
 
-function qMarkers(num){
-    var arr = [];
-    for(var i = 0; i < num; i++){
-        arr.push("?");
-    };
-    return arr.toString();
-};
-
 function sqlEyesObj(ob){
-    var value = ob[key];
-    if(Object.hasOwnProperty.call(ob, key)){
-        if(typeof value === "string" && value.indexOf(" ") >= 0){
-            value = "'" + value + "'";
+    var arr = [];
+    for(var key in ob){
+        var value = ob[key];
+        if(Object.hasOwnProperty.call(ob, key)){
+            if(typeof value === "string" && value.indexOf(" ") >= 0){
+                value = "'" + value + "'";
+            };
+            arr.push(key + "=" + value);
         };
-        arr.push(key + "=" + value);
-    };
+    }
     return arr.toString();
 };
 
@@ -28,13 +23,10 @@ var orm = {
         });
     },
     insertOne: function(table, cols, vals, cb){
-        var querSt = "INSERT INTO" + table;
+        var querSt = "INSERT INTO " + table;
         querSt += " (";
         querSt += cols.toString();
-        querSt += ") ";
-        querSt += "VALUES (";
-        querSt += qMarkers(vals.length);
-        querSt += ") ";
+        querSt += ") VALUES (?) ";
         connection.query(querSt, vals, function(err, res){
             if (err) throw err;
             cb(res);
@@ -44,15 +36,6 @@ var orm = {
         var querSt = "UPDATE " + table;
         querSt += " SET ";
         querSt += sqlEyesObj(objColVals);
-        querSt += " WHERE ";
-        querSt += condition;
-        connection.query(querSt, function(err, res){
-            if(err) throw err;
-            cb(res);
-        });
-    },
-    deleteOne: function(table, condition, cb){
-        var querSt = "DELETE FROM " + table;
         querSt += " WHERE ";
         querSt += condition;
         connection.query(querSt, function(err, res){

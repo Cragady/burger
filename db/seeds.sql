@@ -8,7 +8,9 @@ INSERT INTO burgers(burger_name, devoured)
         ("Spicy Angus", true),
         ("Patty Melt", false),
         ("Cheesy Mistake", true),
-        ("Gut Wrencher", true)
+        ("Gut Wrencher", true),
+        ("Bum Bender", false),
+        ("Greasenator", true)
 ;
 
 SELECT * FROM burgers;

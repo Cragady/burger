@@ -3,6 +3,14 @@
 }
 
 .hover-craft{
-    background: rgb(218, 217, 217);
+    background: rgb(245, 239, 239);
     margin: 3px;
+}
+
+.btn-custo-musto{
+    margin: 7px;
+}
+
+button{
+    min-width: 124px;
 }
