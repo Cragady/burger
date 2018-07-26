@@ -9,7 +9,7 @@
                 <ul class="mx-auto px-0">
                     {{#each burgers}}
                         {{#unless devoured}}
-                            <div class="rounded bg-light">{{burger_name}}</div>
+                            <div class="rounded hover-craft px-1" data-active="no" data-eaten="no">{{burger_name}}</div>
                         {{/unless}}
                     {{/each}}
                 </ul>
@@ -26,7 +26,7 @@
                 <ul class="mx-auto px-0">
                     {{#each burgers}}
                         {{#if devoured}}
-                            <div class="rounded bg-light">{{burger_name}}</div>
+                            <div class="rounded hover-craft px-1" data-active="no" data-eaten="yes">{{burger_name}}</div>
                         {{/if}}
                     {{/each}}
                 </ul>

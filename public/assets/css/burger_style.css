@@ -1,3 +1,8 @@
 #new-berg{
     min-width: 250px;
 }
+
+.hover-craft{
+    background: rgb(218, 217, 217);
+    margin: 3px;
+}
