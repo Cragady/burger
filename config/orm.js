@@ -1,5 +1,7 @@
 var connection = require("../config/connection.js");
 
+//sqlEyesObj is required so that objects can be
+//parsed into readable strings for the sql database
 function sqlEyesObj(ob){
     var arr = [];
     for(var key in ob){
