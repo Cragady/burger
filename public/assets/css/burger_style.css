@@ -16,5 +16,10 @@
 }
 
 button{
+    min-width: 93px;
+    max-width: 93px;
+}
+
+#add-berg{
     min-width: 124px;
 }
