@@ -2,6 +2,10 @@
     min-width: 250px;
 }
 
+#add-berg{
+    margin-bottom: 50px;
+}
+
 .hover-craft{
     background: rgb(245, 239, 239);
     margin: 3px;
